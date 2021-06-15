@@ -6,12 +6,35 @@
     android:layout_margin="16dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/score_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textSize="24sp" />
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/score_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:text="0"/>
+
+        <Button
+            android:id="@+id/reset_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Reset"/>
+
+        <TextView
+            android:id="@+id/best_view"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:text="1000"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/row0"
@@ -131,46 +154,46 @@
 
     <LinearLayout
         android:id="@+id/row4"
-        android:paddingTop="8dp"
-        android:gravity="center"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="8dp">
 
         <Button
             android:id="@+id/btn_up"
             style="@style/GameButton"
-            android:background="@drawable/ic_action_up"/>
+            android:background="@drawable/ic_action_up" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/row5"
-        android:gravity="center"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/btn_left"
             style="@style/GameButton"
-            android:background="@drawable/ic_action_left"/>
+            android:background="@drawable/ic_action_left" />
 
         <Button
             android:id="@+id/btn_right"
             style="@style/GameButton"
-            android:background="@drawable/ic_action_right"/>
+            android:background="@drawable/ic_action_right" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/row6"
-        android:gravity="center"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/btn_down"
             style="@style/GameButton"
-            android:background="@drawable/ic_action_down"/>
+            android:background="@drawable/ic_action_down" />
 
     </LinearLayout>
 </LinearLayout>

@@ -1,14 +1,18 @@
 package com.example.game2048
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.prefs.Preferences
 
 const val TAG = "Game"
 private val arr4 = Array(4) { 0 }
@@ -16,15 +20,25 @@ var grid = Array(4) { Array(4) { 0 } }
 val grid_new = Array(4) { Array(4) { 0 } }
 var past = Array(4) { Array(4) { 0 } }
 var score = 0
+var best = 100
 
 
 class MainActivity : AppCompatActivity() {
     val scoreView: TextView by lazy { findViewById(R.id.score_view) }
+    val bestView: TextView by lazy { findViewById(R.id.best_view) }
+    val resetBtn: Button by lazy { findViewById(R.id.reset_btn) }
     val allView: ViewGroup by lazy { findViewById(R.id.view_group) }
+    val savedState: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        resetBtn.setOnClickListener {
+            saveGame()
+            startGame()
+        }
 
         allView.setOnTouchListener(
             object : OnSwipeTouchListener(this@MainActivity) {
@@ -50,6 +64,20 @@ class MainActivity : AppCompatActivity() {
             })
 
         setClicks()
+        startGame()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        saveGame()
+    }
+
+    fun startGame() {
+        best = savedState.getInt("BEST", 0)
+        bestView.text = best.toString()
+        score = 0
+
+        grid = blankGrid()
         addNumber()
         addNumber()
         showGrid()
@@ -165,12 +193,24 @@ class MainActivity : AppCompatActivity() {
         showGrid()
 
         if (isGameOver()) {
-            scoreView.text = scoreView.text.toString() + "   GAME OVER!!!"
+//            savedState.edit().putInt("Score", score)
+            resetBtn.text = "GAME OVER!!!"
+            saveGame()
         }
         if (isGameWon()) {
-            scoreView.text = scoreView.text.toString() + "   GAME WON!!!"
+//            savedState.edit().putInt("Score", score)
+            resetBtn.text = "GAME WON!!!"
+            saveGame()
         }
 
+    }
+
+    fun saveGame() {
+        if (score > best) {
+            val edit = savedState.edit()
+            edit.putInt("BEST", score)
+            edit.apply()
+        }
     }
 
     enum class Dir {
