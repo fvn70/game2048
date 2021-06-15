@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/score_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/row0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tile00"
+            style="@style/GameTile"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tile01"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="01" />
+
+        <TextView
+            android:id="@+id/tile02"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="O2" />
+
+        <TextView
+            android:id="@+id/tile03"
+            style="@style/GameTile"
+            android:text="O3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tile10"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tile11"
+            style="@style/GameTile"
+            android:text="11" />
+
+        <TextView
+            android:id="@+id/tile12"
+            style="@style/GameTile"
+            android:text="12" />
+
+        <TextView
+            android:id="@+id/tile13"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="X" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tile20"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tile21"
+            style="@style/GameTile"
+            android:text="X" />
+
+        <TextView
+            android:id="@+id/tile22"
+            style="@style/GameTile"
+            android:text="O" />
+
+        <TextView
+            android:id="@+id/tile23"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="X" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tile30"
+            style="@style/GameTile"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tile31"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="X" />
+
+        <TextView
+            android:id="@+id/tile32"
+            style="@style/GameTile"
+            android:background="@color/light_gray"
+            android:text="O" />
+
+        <TextView
+            android:id="@+id/tile33"
+            style="@style/GameTile"
+            android:text="X" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row4"
+        android:paddingTop="8dp"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_up"
+            style="@style/GameButton"
+            android:background="@drawable/ic_action_up"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row5"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_left"
+            style="@style/GameButton"
+            android:background="@drawable/ic_action_left"/>
+
+        <Button
+            android:id="@+id/btn_right"
+            style="@style/GameButton"
+            android:background="@drawable/ic_action_right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row6"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_down"
+            style="@style/GameButton"
+            android:background="@drawable/ic_action_down"/>
+
+    </LinearLayout>
+</LinearLayout>
