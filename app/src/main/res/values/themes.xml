@@ -14,7 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="GameTile">
-        <item name="android:textSize">30sp</item>
         <item name="android:layout_gravity">fill</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">Roboto-Thin</item>
@@ -23,6 +22,9 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">80dp</item>
+    </style>
+    <style name="LandTile" parent="GameTile">
+        <item name="android:layout_height">60dp</item>
     </style>
     <style name="GameButton">
         <item name="android:layout_margin">2dp</item>

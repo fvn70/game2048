@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/row0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tile00"
+                style="@style/LandTile"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tile01"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="01" />
+
+            <TextView
+                android:id="@+id/tile02"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="O2" />
+
+            <TextView
+                android:id="@+id/tile03"
+                style="@style/LandTile"
+                android:text="O3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tile10"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tile11"
+                style="@style/LandTile"
+                android:text="11" />
+
+            <TextView
+                android:id="@+id/tile12"
+                style="@style/LandTile"
+                android:text="12" />
+
+            <TextView
+                android:id="@+id/tile13"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="X" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tile20"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tile21"
+                style="@style/LandTile"
+                android:text="X" />
+
+            <TextView
+                android:id="@+id/tile22"
+                style="@style/LandTile"
+                android:text="O" />
+
+            <TextView
+                android:id="@+id/tile23"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="X" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tile30"
+                style="@style/LandTile"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tile31"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="X" />
+
+            <TextView
+                android:id="@+id/tile32"
+                style="@style/LandTile"
+                android:background="@color/light_gray"
+                android:text="O" />
+
+            <TextView
+                android:id="@+id/tile33"
+                style="@style/LandTile"
+                android:text="X" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:id="@+id/best_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:text="0"/>
+
+            <Button
+                android:id="@+id/reset_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Reset"/>
+
+            <TextView
+                android:id="@+id/score_view"
+                android:gravity="end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="4dp">
+
+            <Button
+                android:id="@+id/btn_up"
+                style="@style/GameButton"
+                android:background="@drawable/ic_action_up" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_left"
+                style="@style/GameButton"
+                android:background="@drawable/ic_action_left" />
+
+            <Button
+                android:id="@+id/btn_right"
+                style="@style/GameButton"
+                android:background="@drawable/ic_action_right" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_down"
+                style="@style/GameButton"
+                android:background="@drawable/ic_action_down" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

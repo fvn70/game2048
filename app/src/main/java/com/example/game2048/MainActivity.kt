@@ -1,8 +1,11 @@
 package com.example.game2048
 
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.media.VolumeShaper
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
@@ -11,6 +14,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.prefs.Preferences
 
@@ -21,7 +26,8 @@ val grid_new = Array(4) { Array(4) { 0 } }
 var past = Array(4) { Array(4) { 0 } }
 var score = 0
 var best = 100
-
+var beginGame = true
+var currentOrientation = 1
 
 class MainActivity : AppCompatActivity() {
     val scoreView: TextView by lazy { findViewById(R.id.score_view) }
@@ -37,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         resetBtn.setOnClickListener {
             saveGame()
+            beginGame = true
             startGame()
         }
 
@@ -77,13 +84,23 @@ class MainActivity : AppCompatActivity() {
         bestView.text = best.toString()
         score = 0
 
-        grid = blankGrid()
-        addNumber()
-        addNumber()
+        val json = savedState.getString("GRID", "") ?: ""
+        if (beginGame || json.length == 0) {
+            grid = blankGrid()
+            addNumber()
+            addNumber()
+            beginGame = false
+        } else {
+            val gson = Gson()
+            val type = object : TypeToken<Array<Array<Int>>>()  {}.type
+            grid = gson.fromJson(json, type)
+        }
         showGrid()
     }
 
     fun showGrid() {
+//        currentOrientation = Configuration().orientation
+        currentOrientation = getResources().getConfiguration().orientation
         for (j in 0..3)
             for (i in 0..3) {
                 val id = "tile" + j + i
@@ -97,9 +114,16 @@ class MainActivity : AppCompatActivity() {
                     grid_new[i][j] = 0
                     cell.text = x.toString()
                     cell.textSize = 64f
+                    if (currentOrientation === Configuration.ORIENTATION_LANDSCAPE) {
+                        cell.textSize = 48f
+                    }
                 } else {
                     if (x > 0) {
-                        cell.textSize = colorsSizes[x]?.first?.toFloat() ?: 8.0f
+                        var textSize = colorsSizes[x]?.first?.toFloat() ?: 8.0f
+                        if (currentOrientation === Configuration.ORIENTATION_LANDSCAPE) {
+                            textSize *= 0.8f
+                        }
+                        cell.textSize = textSize
                         val color = colorsSizes[x]?.second ?: "#000000"
                         cell.setBackgroundColor(Color.parseColor(color))
                         cell.text = x.toString()
@@ -206,11 +230,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun saveGame() {
+        val edit = savedState.edit()
+        val gson = Gson()
+        val json = gson.toJson(grid)
+        edit.putString("GRID", json)
+        Log.d("GSON", json)
         if (score > best) {
-            val edit = savedState.edit()
             edit.putInt("BEST", score)
-            edit.apply()
         }
+        edit.apply()
     }
 
     enum class Dir {

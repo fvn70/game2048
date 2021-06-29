@@ -3,21 +3,22 @@
     android:id="@+id/view_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_margin="8dp">
 
         <TextView
-            android:id="@+id/score_view"
+            android:id="@+id/best_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="24sp"
-            android:text="0"/>
+            android:text="100"/>
 
         <Button
             android:id="@+id/reset_btn"
@@ -27,13 +28,13 @@
             android:text="Reset"/>
 
         <TextView
-            android:id="@+id/best_view"
+            android:id="@+id/score_view"
             android:gravity="end"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="24sp"
-            android:text="1000"/>
+            android:text="0"/>
     </LinearLayout>
 
     <LinearLayout
@@ -157,7 +158,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="8dp">
+        android:paddingTop="4dp">
 
         <Button
             android:id="@+id/btn_up"
