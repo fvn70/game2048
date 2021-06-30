@@ -21,7 +21,7 @@
         <item name="android:layout_margin">@dimen/margin_grid_cell</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
     <style name="LandTile" parent="GameTile">
         <item name="android:layout_height">60dp</item>
@@ -33,6 +33,6 @@
         <item name="android:layout_gravity">fill</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 </resources>

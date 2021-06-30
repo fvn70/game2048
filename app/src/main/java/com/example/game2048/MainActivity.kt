@@ -20,14 +20,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.prefs.Preferences
 
 const val TAG = "Game"
-private val arr4 = Array(4) { 0 }
 var grid = Array(4) { Array(4) { 0 } }
 val grid_new = Array(4) { Array(4) { 0 } }
 var past = Array(4) { Array(4) { 0 } }
 var score = 0
 var best = 100
 var beginGame = true
-var currentOrientation = 1
 
 class MainActivity : AppCompatActivity() {
     val scoreView: TextView by lazy { findViewById(R.id.score_view) }
@@ -91,6 +89,7 @@ class MainActivity : AppCompatActivity() {
             addNumber()
             beginGame = false
         } else {
+            score = savedState.getInt("SCORE", 0)
             val gson = Gson()
             val type = object : TypeToken<Array<Array<Int>>>()  {}.type
             grid = gson.fromJson(json, type)
@@ -99,8 +98,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showGrid() {
-//        currentOrientation = Configuration().orientation
-        currentOrientation = getResources().getConfiguration().orientation
+        val orientation = getResources().getConfiguration().orientation
+        val isLandscape = (orientation === Configuration.ORIENTATION_LANDSCAPE)
         for (j in 0..3)
             for (i in 0..3) {
                 val id = "tile" + j + i
@@ -113,14 +112,14 @@ class MainActivity : AppCompatActivity() {
                     cell.setBackgroundResource(R.drawable.textview_bg)
                     grid_new[i][j] = 0
                     cell.text = x.toString()
-                    cell.textSize = 64f
-                    if (currentOrientation === Configuration.ORIENTATION_LANDSCAPE) {
+                    cell.textSize = 56f
+                    if (isLandscape) {
                         cell.textSize = 48f
                     }
                 } else {
                     if (x > 0) {
                         var textSize = colorsSizes[x]?.first?.toFloat() ?: 8.0f
-                        if (currentOrientation === Configuration.ORIENTATION_LANDSCAPE) {
+                        if (isLandscape) {
                             textSize *= 0.8f
                         }
                         cell.textSize = textSize
@@ -234,6 +233,7 @@ class MainActivity : AppCompatActivity() {
         val gson = Gson()
         val json = gson.toJson(grid)
         edit.putString("GRID", json)
+        edit.putInt("SCORE", score)
         Log.d("GSON", json)
         if (score > best) {
             edit.putInt("BEST", score)
